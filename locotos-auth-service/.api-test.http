@@ -1,0 +1,29 @@
+### get 
+GET http://localhost:3000/testing
+
+### probar GET con auth
+### get 
+GET http://localhost:3000/api/auth/hola
+
+
+
+###  REGISTRARSE COMO USUARIO NUEVO
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "nombre": "Usuario Nuevo",
+  "correo": "usuario.nuevo@example.com",
+  "password": "Password123",
+  "tipo_usuario": "CLIENTE",
+  "estado": "ACTIVO"
+}
+
+###  LOGEARSE 
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "correo": "usuario.nuevo@example.com",
+  "password": "Password123"
+}

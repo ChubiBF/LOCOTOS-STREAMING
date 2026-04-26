@@ -1,7 +1,8 @@
 import type { RowDataPacket } from 'mysql2/promise'
-import type { Usuario, UsuarioBasic } from '../../domain/entities/Usuario.js'
+import type { Usuario } from '../../domain/entities/Usuario.js'
+import type { UsuarioBasic } from '../dtos/usuario.dto.js'
 
-export function mapUsusarioToUsuarioBasic (user: Usuario): UsuarioBasic {
+export function mapUsuarioToUsuarioBasic (user: Usuario): UsuarioBasic {
   return {
     id_usuario: user.id_usuario,
     nombre: user.nombre,

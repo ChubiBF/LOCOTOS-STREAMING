@@ -1,12 +1,14 @@
-import { estadoUsuario, tipoUsuario } from '../../types.js'
+import type { UsuarioBasic } from '../../application/dtos/usuario.dto.js'
 
-export interface UsuarioBasic {
-  id_usuario: number
-  nombre: string
-  correo: string
-  tipo_usuario: tipoUsuario
-  estado: estadoUsuario
-  fecha_registro: string
+export enum tipoUsuario {
+  cliente = 'CLIENTE',
+  admin = 'ADMIN'
+}
+
+export enum estadoUsuario {
+  activo = 'ACTIVO',
+  suspendido = 'SUSPENDIDO',
+  pendiente_verificacion = 'PENDIENTE_VERIFICACION'
 }
 
 export interface Usuario extends UsuarioBasic {
