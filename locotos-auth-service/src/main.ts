@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import userRouter from './infrastructure/http/Routes/user-router.js'
 import cors from 'cors'
+import perfilRouter from './infrastructure/http/Routes/perfil-router.js'
 
 dotenv.config()
 
@@ -12,6 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/auth', userRouter)
+app.use('/api/perfil', perfilRouter)
 
 app.get('/testing', (req, res) => {
   console.log('primera')

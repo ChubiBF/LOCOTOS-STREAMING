@@ -1,6 +1,8 @@
-import type { Perfil } from '../../domain/entities/Perfil.js'
+import { idiomaPerfil, type Perfil } from '../../domain/entities/Perfil.js'
 import { DEFAULT_AVATAR_URL } from '../../CONSTS.js'
 import type { RowDataPacket } from 'mysql2/promise'
+
+const DEFAULT_IDIOMA_PERFIL = idiomaPerfil.esBO
 
 export function mapPerfilResultToPerfil (perfil: Partial<Perfil>): Perfil {
   return {
@@ -9,7 +11,7 @@ export function mapPerfilResultToPerfil (perfil: Partial<Perfil>): Perfil {
     nombre: perfil.nombre ?? '',
     avatar_url: perfil.avatar_url ?? DEFAULT_AVATAR_URL,
     id_clasificacion_maxima: perfil.id_clasificacion_maxima ?? 0,
-    idioma_preferido: perfil.idioma_preferido ?? '',
+    idioma_preferido: perfil.idioma_preferido ?? DEFAULT_IDIOMA_PERFIL,
     modo_oscuro: perfil.modo_oscuro ?? true,
     fecha_creacion: new Date().toISOString()
   }
@@ -24,7 +26,7 @@ export function mapRowToPerfilList (row: RowDataPacket[]): Perfil[] {
     nombre: perfil.nombre ?? '',
     avatar_url: perfil.avatar_url ?? DEFAULT_AVATAR_URL,
     id_clasificacion_maxima: perfil.id_clasificacion_maxima ?? 0,
-    idioma_preferido: perfil.idioma_preferido ?? '',
+    idioma_preferido: perfil.idioma_preferido ?? DEFAULT_IDIOMA_PERFIL,
     modo_oscuro: perfil.modo_oscuro ?? true,
     fecha_creacion: perfil.fecha_creacion ?? new Date().toISOString()
   }))

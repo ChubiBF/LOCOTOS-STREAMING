@@ -4,11 +4,18 @@ import { RegisterUser } from '../application/use-cases/auth/register-user.js'
 import { UserController } from './http/Controllers/user-controller.js'
 import { connectionConfig } from './database/mysql-config.js'
 import { LoginUser } from '../application/use-cases/auth/login-user.js'
+import { MySQLPerfilRepository } from './database/mysql-perfil.repository.js'
+import { CreateProfile } from '../application/use-cases/perfil/create-profile.js'
+import { GetProfilesByUser } from '../application/use-cases/perfil/get-profiles-by-user.js'
+import { EditProfile } from '../application/use-cases/perfil/edit-profile.js'
+import { DeleteProfile } from '../application/use-cases/perfil/delete-profile.js'
+import { PerfilController } from './http/Controllers/perfil-controller.js'
 
 const pool = createPool({
   ...connectionConfig
 })
 
+// ------PARA EL USER ////
 // Repository
 const userRepository = new MySQLUserRepository(pool)
 
@@ -19,4 +26,16 @@ const loginUser = new LoginUser(userRepository)
 // Controller
 const userController = new UserController(registerUser, loginUser)
 
-export { userController }
+/// ------------- PARA LOS PERFILES ///
+const perfilRepository = new MySQLPerfilRepository(pool)
+
+// Casos de Uso de Perfil
+const createProfile = new CreateProfile(perfilRepository, userRepository)
+const getProfiles = new GetProfilesByUser(perfilRepository, userRepository)
+const editProfile = new EditProfile(perfilRepository)
+const deleteProfile = new DeleteProfile(perfilRepository)
+
+// Controlador
+const perfilController = new PerfilController(createProfile, getProfiles, editProfile, deleteProfile)
+
+export { userController, perfilController }
