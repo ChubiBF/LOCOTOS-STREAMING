@@ -12,9 +12,9 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-  "nombre": "Usuario Nuevo",
-  "correo": "andres.nuevo@example.com",
-  "password": "Password123",
+  "nombre": "Andres Baldiviezo Farfan",
+  "correo": "andres123bf@gmail.com",
+  "password": "123Andres",
   "tipo_usuario": "CLIENTE",
   "estado": "ACTIVO"
 }
@@ -24,7 +24,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "correo": "usuario.nuevo@example.com",
+  "correo": "andres123bf@gmail.com",
   "password": "Password123"
 }
 
@@ -97,7 +97,41 @@ Content-Type: application/json
   "idioma_preferido": "pt",
   "modo_oscuro": true
 }
-
+andres.nuevo@example.com
 # -------------------------------------
 
-###
+### SOLICITAR RECUPERACION DE CONTRASENA
+POST http://localhost:3000/api/email/forgot-password
+Content-Type: application/json
+
+{
+  "correo": "andres123bf@gmail.com"
+}
+
+### CAMBIAR CONTRASENA CON TOKEN
+POST http://localhost:3000/api/email/reset-password
+Content-Type: application/json
+
+{
+  "correo": "andres123bf@gmail.com",
+  "token": "0b2c24c5-3c1a-4742-b667-625850ca144f",
+  "newPassword": "Password123"
+}
+
+
+### VERIFICAR EMAIL CON CODIGO
+POST http://localhost:3000/api/email/send-verification
+Content-Type: application/json
+
+{
+  "correo": "andres123bf@gmail.com"
+}
+
+### VERIFICAR EMAIL CON CODIGO
+POST http://localhost:3000/api/email/verify-email
+Content-Type: application/json
+
+{
+  "correo": "andres123bf@gmail.com",
+  "code": "808104"
+}

@@ -52,4 +52,14 @@ export class MySQLUserRepository implements IUserRepository {
       return null
     }
   }
+
+  async updatePassword (idUsuario: number, passwordHash: string): Promise<void> {
+    const query = 'UPDATE Usuario SET password_hash = ? WHERE id_usuario = ?'
+    await this.db.execute(query, [passwordHash, idUsuario])
+  }
+
+  async verifyAccount (idUsuario: number): Promise<void> {
+    const query = 'UPDATE Usuario SET estado = "activo" WHERE id_usuario = ?'
+    await this.db.execute(query, [idUsuario])
+  }
 }
