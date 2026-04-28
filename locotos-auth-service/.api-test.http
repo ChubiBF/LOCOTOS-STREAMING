@@ -13,8 +13,8 @@ Content-Type: application/json
 
 {
   "nombre": "Andres Baldiviezo Farfan",
-  "correo": "andres123bf@gmail.com",
-  "password": "123Andres",
+  "correo": "mateofernandotorreztapia@gmail.com",
+  "password": "Mateo123",
   "tipo_usuario": "CLIENTE",
   "estado": "ACTIVO"
 }
@@ -124,7 +124,7 @@ POST http://localhost:3000/api/email/send-verification
 Content-Type: application/json
 
 {
-  "correo": "andres123bf@gmail.com"
+  "correo": "mateofernandotorreztapia@gmail.com"
 }
 
 ### VERIFICAR EMAIL CON CODIGO
@@ -132,6 +132,6 @@ POST http://localhost:3000/api/email/verify-email
 Content-Type: application/json
 
 {
-  "correo": "andres123bf@gmail.com",
-  "code": "808104"
+  "correo": "mateofernandotorreztapia@gmail.com",
+  "code": "119864"
 }
