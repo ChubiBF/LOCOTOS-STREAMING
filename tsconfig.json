@@ -8,6 +8,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "locotos-auth-service/**/*.ts"
+    "locotos-auth-service/**/*.ts",
+    "locotos-suscriptions-service/src/**/*.ts"
   ]
 }
